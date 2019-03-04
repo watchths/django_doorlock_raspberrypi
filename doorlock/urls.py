@@ -15,14 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.urls import path
-from lock.views import turnOn
-from lock.views import turnOff
-from lock.views import foo
+from django.urls import path, re_path, include
+
+from lock.views import turnOn,turnOff,foo
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    url(r'foo/$', foo),
-    url(r'lock/$', turnOn),
-    url(r'unlock/$', turnOff),
+    path('admin/', admin.site.urls),
+    url(r'^lock/', include('lock.urls')),
+#    url(r'^$', foo),
+#    url(r'foo/$', foo),
 ]

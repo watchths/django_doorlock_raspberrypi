@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
+  <script src="{% static "/js/bootstrap.min.js" %}"></script>
+</head>
+<body>
+      <div class="d-flex justify-content-center">
+            <a href="close_door" class="btn btn-success">LOCK DOOR</a>
+            <a href="open_door" class="btn btn-danger">UNLOCK DOOR</a>
+      </div>
+      
+      <div class="d-flex justify-content-center">
+            <p>STATUS=</p>
+            {% block content %}
+              <p>{{status}}</p>
+            {% endblock %}
+      </div>
+      
+</body>
+</html>

@@ -25,7 +25,7 @@ SECRET_KEY = 'k_c9bzg9b-uz244ctky(5s@@5cbcy!w_7t@n3b+z4*dmv_5&pz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.10.5.100']
 
 
 # Application definition
@@ -120,3 +120,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    "/home/pi/virtualenv/doorlock/doorlock/lock/static/",
+)
