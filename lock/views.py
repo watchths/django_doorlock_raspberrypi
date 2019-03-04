@@ -5,9 +5,10 @@ import RPi.GPIO as GPIO
 import time
 from django.db.models import Count
 
-servoPIN = 14
+#Setting metode penomeran menjadi standar Broadcom 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(servoPIN, GPIO.OUT)
+GPIO.setwarnings(False)
+GPIO.setup(17,GPIO.OUT)
 
 p = GPIO.PWM(servoPIN, 50) # GPIO 17 for PWM with 50Hz
 p.start(2.5) # Initialization
@@ -18,8 +19,7 @@ def index(request):
     return render_to_response('index.html', {'status':"LOCKED"})
 
 def turnOn(request):
-    p.ChangeDutyCycle(5)
-    time.sleep(0.5)
+    GPIO.output(17, GPIO.LOW)
 #    p.stop()
 #    GPIO.cleanup()
     return render_to_response('index.html', {'status':"LOCKED"})
@@ -27,8 +27,7 @@ def turnOn(request):
 
 def turnOff(request):
     status = 'unlocked'
-    p.ChangeDutyCycle(12.5)
-    time.sleep(0.5)
+    GPIO.output(17, GPIO.HIGH)
 #    p.stop()
 #    GPIO.cleanup()
     return render_to_response('index.html', {'status':"UNLOCKED"})
