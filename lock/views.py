@@ -13,27 +13,23 @@ GPIO.setup(17,GPIO.OUT)
 # Create your views here.
 
 def index(request):
-    return render_to_response('index.html', {'status':"LOCKED"})
+    state = GPIO.input(17)
+    return render_to_response('index.html', {'status':state})
 
 def turnOn(request):
     GPIO.output(17, GPIO.LOW)
+    state = GPIO.input(17)
 #    p.stop()
 #    GPIO.cleanup()
-    return render_to_response('index.html', {'status':"LOCKED"})
+    return render_to_response('index.html', {'status':state})
 
 
 def turnOff(request):
-    status = 'unlocked'
     GPIO.output(17, GPIO.HIGH)
+    state = GPIO.input(17)
 #    p.stop()
 #    GPIO.cleanup()
-    return render_to_response('index.html', {'status':"UNLOCKED"})
-
-#def turnOn(request):
-#    return render_to_response('locked.html')
-#
-#def turnOff(request):
-#    return render_to_response('unlocked.html')
+    return render_to_response('index.html', {'status':state})
 
 def foo(request):
     return render_to_response('index.html')
