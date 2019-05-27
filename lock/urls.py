@@ -8,6 +8,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    url(r'close_door/$', turnOn),
-    url(r'open_door/$', turnOff),
+    url(r'close_door/$', turnOn, name='close'),
+    url(r'open_door/$', turnOff, name='open'),
 ]
